@@ -14,7 +14,7 @@ services:
       - MYSQL_DATABASE=$MYSQLDB_DATABASE
       - MYSQL_HOST=$MYSQL_HOST
     ports:
-      - "3307:3307"
+      - "3307:3306"
     volumes:
       - db:/var/lib/mysql
 
@@ -43,7 +43,7 @@ services:
       - .:/src
     # command: npm run start:dev
       - /src/node_modules
-    entrypoint: ["/bin/bash", "./entrypoint.sh"]
+    entrypoint: ["/bin/sh", "./entrypoint.sh"]
     env_file: .env
     ports:
       - 3000:3000

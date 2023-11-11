@@ -7,12 +7,12 @@ const connectRedis = require("connect-redis");
 const REDIS_PORT = process.env.REDIS_PORT;
 const REDIS_URL = process.env.REDIS_URL;
 const RedisStore = connectRedis(session);
-const client = redis.createClient({ host: "redis-server", port: REDIS_PORT });
+const client = redis.createClient({ host: REDIS_URL, port: REDIS_PORT });
 
 var redisStore = new RedisStore({
   host: "redis-server",
   port: REDIS_PORT,
-  client: client
+  client: client,
 });
 
 module.exports = {

@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const User = require("../../models/user");
+const User = require("../models/user");
 const sequelize = require("../database/config/connection");
 const Document = require("../models/document");
 const Sector = require("../models/sector");
@@ -35,7 +35,6 @@ exports.index = async (req, res, next) => {
     };
     // return res.json({access: sector})
 
-
     const loggedInUser = session.sessionID;
     res.locals.sessionID = session.sessionID;
 
@@ -52,9 +51,7 @@ exports.index = async (req, res, next) => {
           [Op.gt]: date.toDateString(),
         },
       },
-      attributes: [
-        [sequelize.fn("COUNT", sequelize.col("*")), "count_access"],
-      ],
+      attributes: [[sequelize.fn("COUNT", sequelize.col("*")), "count_access"]],
       order: [["last_login", "ASC"]],
     });
 
@@ -65,7 +62,7 @@ exports.index = async (req, res, next) => {
       sectors: sectors,
       documents: documents,
       webinar: webinar,
-      access: access
+      access: access,
     });
   }
   return res.json();
