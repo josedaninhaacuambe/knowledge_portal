@@ -99,6 +99,11 @@ function Aside({ router }) {
 
   const settingsMenu = [
     {
+      title: "Perfil",
+      icon: FiUsers,
+      path: "/profile",
+    },
+    {
       title: "Configuracoes",
       icon: FiSettings,
       path: "/settings",
@@ -111,12 +116,9 @@ function Aside({ router }) {
   ];
 
   return (
-    <aside className=" bg-white  fixed top-0 left-0 z-10 w-72 h-full min-h-screen shadow-xl overflow-auto ">
+    <aside className="bg-[#FDFDFD]  border-4 border-gray-100 fixed top-0 left-0 z-10 w-72 h-full min-h-screen  overflow-auto ">
       <div className="px-5 flex flex-col h-full py-5   ">
-        <div className=" flex justify-center mb-10">
-          <img className="w-20" src="/images/logo.png" alt="" />
-        </div>
-        <ul className="flex flex-col gap-2 ">
+        <ul className="flex flex-col gap-2 pt-28">
           {menuItems.map((items, index) => (
             <li className=" " key={index}>
               <NavLink
