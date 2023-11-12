@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 
-
 export default function Dashboard() {
   // const [mainSession, setMainSession] = useState(false);
   // setMainSession(JSON.parse(localStorage.getItem('mainSession')))
@@ -13,6 +12,7 @@ let mainSession = (JSON.parse(localStorage.getItem('mainSession')))
       <h3 className="uk-margin-medium-left uk-text-bold uk-margin-large-top">
         Visão Geral
       </h3>
+     
       <div className="uk-child-width-1-3@s uk-grid-match" uk-grid="uk-grid">
         <div>
           <div className="uk-card uk-card-small uk-card-hover uk-card-body uk-border-rounded">

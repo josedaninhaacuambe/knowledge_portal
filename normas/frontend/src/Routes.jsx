@@ -40,7 +40,6 @@ export function AppRoutes() {
         <Route path="accounts/login" element={<Login />} />
         <Route path="accounts/logout" />
 
-
         <Route path="/" element={<ProtectedRoute />}>
           <Route path="/" element={<App />} />
           <Route path="accounts/create" element={<Signup />} />

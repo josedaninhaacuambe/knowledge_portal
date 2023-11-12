@@ -1,4 +1,11 @@
-import MenuParent from "./MenuParent";
+import { FiUsers, FiLogOut, FiSettings } from "react-icons/fi";
+import { RxDashboard, RxArchive, RxInfoCircled } from "react-icons/rx";
+import { VscPieChart, VscLibrary, VscLaw } from "react-icons/vsc";
+import { GiProcessor } from "react-icons/gi";
+import { BsBorderStyle } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+
 const normas = [
   { index: "NORMAS", url: "/normas" },
   { index: "NOVA NORMA", url: "/normas/create" },
@@ -8,7 +15,6 @@ const webinars = [
   { index: "WEBINAR", url: "/webinars" },
   { index: "NOVO WEBINAR", url: "/webinars/create" },
 ];
-
 
 const Legislacao = [
   { index: "LEGISLACAO", url: "/legislacao" },
@@ -30,11 +36,6 @@ const diagrama = [
   { index: "NOVO DIAGRAMA", url: "/accounts/create" },
 ];
 
-// const ordem_Servico = [
-//   { index: "ORDENS", url: "/accounts" },
-//   { index: "NOVA ORDEM", url: "/accounts/create" },
-// ];
-
 const sectores = [
   { index: "SECTORES", url: "/sectores" },
   { index: "NOVO SECTOR", url: "/sectores/create" },
@@ -45,171 +46,106 @@ const account = [
   { index: "NOVO USUARIO", url: "/accounts/create" },
 ];
 
-function Aside() {
+function Aside({ router }) {
   const user = JSON.parse(localStorage.getItem("user"));
+
+  const menuItems = [
+    {
+      title: "Dashboard",
+      icon: RxDashboard,
+      path: "/",
+    },
+    {
+      title: "Usuarios",
+      icon: FiUsers,
+      path: "/accounts",
+    },
+    {
+      title: "Sectores",
+      icon: RxArchive,
+      path: "/sectores",
+    },
+    {
+      title: "Normas",
+      icon: RxInfoCircled,
+      path: "/normas",
+    },
+    {
+      title: "Werbinars",
+      icon: VscLibrary,
+      path: "/webinars",
+    },
+    {
+      title: "Processos",
+      icon: GiProcessor,
+      path: "/processos",
+    },
+    {
+      title: "Legislacao",
+      icon: VscLaw,
+      path: "/legislacao",
+    },
+    {
+      title: "Ordens",
+      icon: BsBorderStyle,
+      path: "/ordens",
+    },
+    {
+      title: "Diagramas",
+      icon: VscPieChart,
+      path: "/diagramas",
+    },
+  ];
+
+  const settingsMenu = [
+    {
+      title: "Configuracoes",
+      icon: FiSettings,
+      path: "/settings",
+    },
+    {
+      title: "Sair",
+      icon: FiLogOut,
+      path: "/logout",
+    },
+  ];
+
   return (
-    <aside className="uk-light uk-visible@m" id="left-col">
-      <div className="left-logo uk-flex uk-flex-middle">
-        <img className="custom-logo" src="/images/logo.PNG" alt="" />
-      </div>
-      <div className="left-content-box content-box-dark">
-        <img
-          className="uk-border-rounded profile-img"
-          src="/images/logo.PNG"
-          alt=""
-        />
-        <h4 className="uk-text-center uk-margin-remove-vertical text-light">
-          {user.first_name}
-        </h4>
-        <div className="uk-position-relative uk-text-center uk-display-block">
-          <a
-            className="uk-text-small uk-text-muted uk-display-block uk-text-center"
-            href="/perfil"
-            data-uk-icon="icon: triangle-down; ratio: 0.7"
-          >
-            {user
-              ? user.role === "admin"
-                ? "Administrador"
-                : user.role === "basic"
-                ? "Usuario Normal"
-                : user.role === "supervisor"
-                ? "Supervisor"
-                : "Desconhecido"
-              : "NA"}
-          </a>
-          {/* user dropdown */}
-          <div
-            className="uk-dropdown user-drop"
-            data-uk-dropdown="mode: click; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 150"
-          >
-            <ul className="uk-nav uk-dropdown-nav uk-text-left">
-              <li>
-                <a href="/perfil">
-                  <span data-uk-icon="icon: image"></span> Your Data
-                </a>
-              </li>
-              <li className="uk-nav-divider"></li>
-              <li>
-                <a href="/account/logout">
-                  <span data-uk-icon="icon: sign-out"></span> Sign Out
-                </a>
-              </li>
-            </ul>
-          </div>
+    <aside className=" bg-white  fixed top-0 left-0 z-10 w-72 h-full min-h-screen shadow-xl overflow-auto ">
+      <div className="px-5 flex flex-col h-full py-5   ">
+        <div className=" flex justify-center mb-10">
+          <img className="w-20" src="/images/logo.png" alt="" />
         </div>
-      </div>
-
-      <div className="left-nav-wrap">
-        <ul className="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
-          <li className="uk-nav-header">
-            <a className="uk-text-white" href="/index">
-              Visão Geral
-            </a>
-          </li>
-
-          <MenuParent
-            mainTitle="USUARIOS"
-            icon="icon: thumbnails"
-            childTitle={account}
-          ></MenuParent>
-          <MenuParent
-            mainTitle="SECTORES"
-            icon="icon: album"
-            childTitle={sectores}
-          ></MenuParent>
-          <MenuParent
-            mainTitle="NORMAS"
-            icon="icon: file-text"
-            childTitle={normas}
-          ></MenuParent>
-          <MenuParent
-            mainTitle="WEBINAR"
-            icon="icon: file-text"
-            childTitle={webinars}
-          ></MenuParent>
-
-          <MenuParent
-            mainTitle="PROCESSO"
-            icon="icon: file-text"
-            childTitle={processos}
-          ></MenuParent>
-
-          <MenuParent
-            mainTitle="LEGISLACAO"
-            icon="icon: file-text"
-            childTitle={Legislacao}
-          ></MenuParent>
-
-          <MenuParent
-            mainTitle="ORDEMS"
-            icon="icon: file-text"
-            childTitle={Ordem}
-          ></MenuParent>
-
-          <MenuParent
-            mainTitle="DIAGRAMAS"
-            icon="icon: file-text"
-            childTitle={diagrama}
-          ></MenuParent>
+        <ul className="flex flex-col gap-2 ">
+          {menuItems.map((items, index) => (
+            <li className=" " key={index}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex items-center !no-underline text-orange-500 gap-5 p-4 bg-gray-100 rounded-md "
+                    : "flex items-center !no-underline text-black gap-5 p-4 hover:bg-gray-100 rounded-md "
+                }
+                to={items.path}
+              >
+                <items.icon />
+                {items.title}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-        <div className="left-content-box uk-margin-top">
-          <h5>Acessos Diarios</h5>
-          <div>
-            <span className="uk-text-small">
-              Tráfego <small>(+20)</small>
-            </span>
-            <progress className="uk-progress" value="20" max="100"></progress>
-          </div>
-        </div>
-      </div>
-      <div className="bar-bottom">
-        <ul
-          className="uk-subnav uk-flex uk-flex-center uk-child-width-1-5"
-          data-uk-grid=""
-        >
-          <li>
-            <a
-              className="uk-icon-link"
-              href="/"
-              data-uk-icon="icon: home"
-              title="Home"
-              data-uk-tooltip=""
-            >
-              &nbsp;
-            </a>
-          </li>
-          <li>
-            <a
-              className="uk-icon-link"
-              href="/"
-              data-uk-icon="icon: settings"
-              title="Settings"
-              data-uk-tooltip=""
-            >
-              &nbsp;
-            </a>
-          </li>
-          <li>
-            <a
-              className="uk-icon-link"
-              href="/"
-              data-uk-icon="icon: social"
-              title="Social"
-              data-uk-tooltip=""
-            >
-              &nbsp;
-            </a>
-          </li>
-          <li>
-            <a
-              className="uk-icon-link"
-              href="/account/logout"
-              data-uk-tooltip="Sign out"
-              data-uk-icon="icon: sign-out"
-            >
-              &nbsp;
-            </a>
-          </li>
+        <div className="flex-1"></div>
+        <ul>
+          {settingsMenu.map((items, index) => (
+            <li className=" " key={index}>
+              <NavLink
+                className="flex items-center !no-underline text-black gap-5 p-4 hover:bg-gray-100 rounded-md "
+                to={items.path}
+              >
+                <items.icon />
+                {items.title}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </aside>

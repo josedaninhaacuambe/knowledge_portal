@@ -4,13 +4,7 @@ const Layout = ({ header, aside, content }) => {
       {header}
       {aside}
 
-      <div
-        className="uk-container uk-container-expand"
-        id="content"
-        data-uk-height-viewport="expand: true"
-      >
-        {content}
-      </div>
+      <div className="pl-72 py-10">{content}</div>
     </div>
   );
 };
