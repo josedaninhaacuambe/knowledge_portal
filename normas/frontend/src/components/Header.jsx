@@ -30,7 +30,7 @@ function Header() {
       <div className="uk-container uk-container-expand py-2 px-12">
         <nav className="flex flex-rows justify-between items-center">
           <div className=" flex justify-center ">
-            <img className="w-20" src="/images/logo.png" alt="" />
+            <img className="w-56" src="/images/EDM.png" alt="" />
           </div>
           <div className="">
             <div className="flex items-center gap-4 ">

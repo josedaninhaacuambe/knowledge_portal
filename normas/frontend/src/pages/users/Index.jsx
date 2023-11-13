@@ -9,6 +9,7 @@ import DataTableExtensions from "react-data-table-component-extensions";
 import "react-data-table-component-extensions/dist/index.css";
 import Spinner from "../../components/Spinner";
 import MessageAlert from "../../components/Alert";
+import { NavLink } from "react-router-dom";
 
 function ListUsers() {
   // const [users, setUsers] = useState(false);
@@ -57,11 +58,17 @@ function ListUsers() {
           {isLoading ? (
             <Spinner />
           ) : (
-            <div className="uk-padding">
-              <h3 className="uk-text-upper uk-margin-medium-top uk-text-bold">
-                Lista de usuários
-              </h3>
-              <MessageAlert />
+            <div className="pt-28 px-10">
+              <div className="flex justify-between items-center pb-5">
+                <h3 className="">Lista de usuários</h3>
+                <NavLink
+                  to={"/accounts/create"}
+                  className="bg-orange-400 px-5 py-3 rounded-lg text-white font-bold no-underline"
+                >
+                  Criar usuario
+                </NavLink>
+                {/* <MessageAlert /> */}
+              </div>
 
               <DataTableExtensions {...tableData}>
                 <DataTable

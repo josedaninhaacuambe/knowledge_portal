@@ -25,12 +25,12 @@ function ListTraining() {
 
         for (const Training of data["body"]) {
           normaData.push({
-            id:    Training.id,
+            id: Training.id,
             nome: `${Training.nome} `,
             email: `${Training.email} `,
             telefone: `${Training.telefone} `,
             published: `${Training.published}`,
-            endereco: `${Training.endereco}`
+            endereco: `${Training.endereco}`,
           });
         }
         setTableData({
@@ -38,7 +38,6 @@ function ListTraining() {
           data: normaData,
         });
         setIsLoading(false);
-
       } catch (error) {
         console.error(error);
       }
@@ -59,7 +58,9 @@ function ListTraining() {
                 Treinamento
               </h3>
               <MessageAlert />
-		          <a class="uk-link-heading" href="/Training/create">Adicionar</a> 
+              <a class="uk-link-heading" href="/Training/create">
+                Adicionar
+              </a>
               <DataTableExtensions {...tableData}>
                 <DataTable
                   columns={TrainingHeader}
