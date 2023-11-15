@@ -10,7 +10,7 @@ const RedisStore = connectRedis(session);
 const client = redis.createClient({ host: REDIS_URL, port: REDIS_PORT });
 
 var redisStore = new RedisStore({
-  host: "redis-server",
+  host:REDIS_URL,
   port: REDIS_PORT,
   client: client,
 });

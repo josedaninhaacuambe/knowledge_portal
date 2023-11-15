@@ -56,6 +56,7 @@ export default function Dashboard() {
       <h3 className=" font-bold text-xl ">Dashboard</h3>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-4 mt-5">
+        {/* Os novos cards */}
         {cardsContent.map((card, key) => {
           return (
             <Card statistic={card.statistic} title={card.title} key={key}>
